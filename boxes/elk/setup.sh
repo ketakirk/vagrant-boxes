@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Provisioning virtual machine..."
-echo "Installing pip"
 
 # Update apt-get
 sudo apt-get update
@@ -29,7 +28,7 @@ echo "deb http://packages.elastic.co/kibana/4.4/debian stable main" | sudo tee -
 sudo apt-get update && sudo apt-get install kibana
 sudo update-rc.d kibana defaults 95 10
 
-echo "starting kibana xoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxoxo"
+echo "starting kibana"
 nohup sudo /opt/kibana/bin/kibana > kibana.log 2>&1 &
 
 # Installation of Logstash
