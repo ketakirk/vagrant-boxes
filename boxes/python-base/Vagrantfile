@@ -1,0 +1,26 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+    # Specify a base box
+    config.vm.box = "ubuntu/trusty64"
+
+    # config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/20160314.0.0"
+    # Set up port forwarding
+    #config.vm.network :forwarded_port, guest: 80, host: 8931, auto_correct: true
+
+    # Set up shared directories
+    #config.vm.synced_folder "./", "/var/www", create: true, group: "www-data", owner: "www-data"
+
+    # VirtualBox properties
+    config.vm.provider "virtualbox" do |v|
+        v.name = "wwcbox"
+        v.customize ["modifyvm", :id, "--memory", "1024"]
+    end
+
+    # Specify provisioner
+    config.vm.provision "shell" do |s|
+        s.path = "setup.sh"
+    end
+
+end
