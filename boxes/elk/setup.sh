@@ -47,7 +47,7 @@ sudo apt-get install -y git
 # Clone the elk_test repository in vagrant's home dir and
 # run the python script to generate fake log data
 echo "Generating test log data"
-cd ~
+cd /home/vagrant
 git clone https://github.com/ketakirk/elk_test.git
 cd /home/vagrant/elk_test
 python generate_log_data.py
