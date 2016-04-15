@@ -39,3 +39,30 @@ sudo service logstash start
 
 # Install Firefox
 # sudo apt-get install -y firefox
+
+# Install git
+echo "Installing git"
+sudo apt-get install -y git
+
+# Clone the elk_test repository in vagrant's home dir and
+# run the python script to generate fake log data
+echo "Generating test log data"
+cd /home/vagrant
+git clone https://github.com/ketakirk/elk_test.git
+cd /home/vagrant/elk_test
+python generate_log_data.py
+
+# Load generated data into Logstash
+echo "Loading data to logstash"
+# to be completed
+
+# Index the loaded data using ElasticSearch
+echo "Indexing data using ElasticSearch"
+# to be completed
+
+# Plot the data using Kibana
+echo "Creating Kibana plots"
+# to be completed
+
+
+
