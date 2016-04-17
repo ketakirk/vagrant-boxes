@@ -48,13 +48,17 @@ sudo apt-get install -y git
 # run the python script to generate fake log data
 echo "Generating test log data"
 cd /home/vagrant
-git clone https://github.com/ketakirk/elk_test.git
+git clone https://github.com/rohan-kekatpure/elk_test.git
 cd /home/vagrant/elk_test
 python generate_log_data.py
 
 # Load generated data into Logstash
 echo "Loading data to logstash"
-# to be completed
+export LOGSTASH_HOME='/opt/logstash'
+$LOGSTASH_HOME/bin/logstash -f '/home/vagrant/elk_test/logstash-test.conf' &
+
+# Change ownership of '/home/vagrant' folder
+sudo chown -R vagrant /home/vagrant
 
 # Index the loaded data using ElasticSearch
 echo "Indexing data using ElasticSearch"
